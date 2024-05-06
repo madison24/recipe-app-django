@@ -8,4 +8,4 @@ In this app users are able to add their own recipes with data that includes the 
 - Difficulty (calculated with cooking time and ingredients)
 - Directions
 
-This Recipe App was built with Python and Django.
+The Recipe App was built with Python using the Django framework. It includes an admin panel with a superuser to perform CRUD operations.
