@@ -8,15 +8,21 @@ class Recipe(models.Model):
     directions = models.TextField(max_length=500)
 
     def calculate_difficulty(self):
+        difficulty = 'Undefined'
         ingredients = self.ingredients.split(', ')
-        if self.cooking_time < 10 and len(ingredients) < 4:
-            difficulty = 'Easy'
-        elif self.cooking_time < 10 and len(ingredients) >= 4:
-            difficulty = 'Medium'
-        elif self.cooking_time >= 10 and len(ingredients) < 4:
-            difficulty = 'Intermediate'
-        elif self.cooking_time >= 10 and len(ingredients) >= 4:
-            difficulty = 'Hard'
+        num_ingredients = len(ingredients)
+
+        if self.cooking_time < 10: 
+            if num_ingredients < 4:
+                difficulty = 'Easy'
+            else:
+                difficulty = 'Medium'
+        else: 
+            if num_ingredients < 4:
+                difficulty = 'Intermediate'
+            else:
+                difficulty = 'Hard'
+
         return difficulty
     
     def __str__(self):
