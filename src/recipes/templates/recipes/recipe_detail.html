@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Recipe App</title>
+    <style>
+      body {
+        font-family: "Oswald", serif;
+      }
+      .recipe-modal {
+        border-radius: 10px;
+        padding: 25px;
+        width: 55%;
+        background-color: #fde5a4;
+        box-shadow: 5px 10px 15px;
+        margin: 0 auto;
+        margin-top: 23vh;
+      }
+      .details-main {
+        display: flex;
+      }
+      .details-extra,
+      .ing-dir {
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="recipe-modal">
+      <h2>{{object.name}}</h2>
+      <div class="details-main">
+        <div class="details-extra">
+          <img src="{{object.pic.url}}" width="200" />
+        </div>
+        <div class="ing-dir">
+          <b>Cooking Time (min): </b> {{object.cooking_time}} <br /><br />
+          <b>Difficulty: </b> {{object.calculate_difficulty}} <br />
+          <br />
+          <b>Ingredients: </b> {{object.ingredients}} <br /><br />
+          <b>Directions: </b> {{object.directions}} <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

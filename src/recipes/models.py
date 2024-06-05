@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 # Create your models here.
 class Recipe(models.Model):
@@ -6,6 +7,7 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField(help_text='in minutes')
     ingredients = models.CharField(max_length=300)
     directions = models.TextField(max_length=500)
+    pic = models.ImageField(upload_to='recipes', default='no_image.jpg')
 
     def calculate_difficulty(self):
         difficulty = 'Undefined'
@@ -25,5 +27,8 @@ class Recipe(models.Model):
 
         return difficulty
     
+    def get_absolute_url(self):
+        return reverse('recipes:detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return str(self.name) 

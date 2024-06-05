@@ -9,6 +9,8 @@ class RecipeModelTest(TestCase):
             cooking_time=5,
             ingredients='Tea Leaves, Sugar, Water',
             directions='1- Boil water. 2- Add tea leaves. 3- Add sugar to taste.')
+          
+        
         
     def test_recipe_name(self):
         recipe = Recipe.objects.get(id=1)
@@ -29,3 +31,11 @@ class RecipeModelTest(TestCase):
         recipe = Recipe.objects.get(id=1)
         dir_max_length = recipe._meta.get_field('directions').max_length
         self.assertEqual(dir_max_length, 500)
+
+    def test_get_absolute_url(self):
+        recipe = Recipe.objects.get(id=1)
+        self.assertEqual(recipe.get_absolute_url(), '/list/1')
+
+    def test_difficulty_calc(self):
+        recipe = Recipe.objects.get(id=1)
+        self.assertEqual(recipe.calculate_difficulty(), 'Easy')
