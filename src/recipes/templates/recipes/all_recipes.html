@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'recipes/css/styles.css' %}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,91 +16,6 @@
       rel="stylesheet"
     />
     <title>Recipe App Main</title>
-    <style>
-      body {
-        font-family: "Oswald", serif;
-      }
-      h3 {
-        font-weight: 400;
-      }
-      .main-image {
-        width: 100%;
-      }
-      .main-image img {
-        width: 100%;
-        max-height: 300px; /* Adjust the max-height as needed */
-        object-fit: cover;
-      }
-      .navbar {
-        max-height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 100px;
-        background-color: #fde5a4;
-      }
-      .title {
-        display: flex;
-        color: #d44d28;
-        font-size: 20px;
-      }
-      .search-bar {
-        display: flex;
-      }
-      .search-bar input {
-        font-size: 15px;
-        width: 325px;
-        padding: 8px;
-        border-radius: 5px 0px 0px 5px;
-        border-width: thin;
-      }
-      .search-bar button {
-        font-size: 15px;
-        border-radius: 0px 5px 5px 0px;
-        border: none;
-        background-color: #d44d28;
-        color: white;
-      }
-      .profile a {
-        text-decoration: none;
-        color: black;
-      }
-      .all-recipes {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 20px 0 20px 0 20px;
-        width: 75vw;
-        margin: 0 auto;
-        border-radius: 20px;
-        margin-top: 20px;
-        grid-row-gap: 15px;
-      }
-      .recipe-item {
-        border-radius: 7px;
-        width: 50vh;
-        padding-bottom: 15px;
-        text-align: center;
-        background-color: #fde5a4;
-      }
-      .recipe-name {
-        font-size: 25px;
-        text-decoration: none;
-        color: black;
-      }
-      .recipe-name:hover {
-        color: #d44d28;
-        transition: 200ms;
-      }
-      .recipe-details {
-        margin-bottom: 10px;
-      }
-      .recipe-pic {
-        width: 300px;
-        height: 280px;
-        border-radius: 6px;
-        margin: 0 auto;
-      }
-    </style>
   </head>
   <body>
     <div class="main-image">
@@ -110,9 +30,7 @@
         <button type="submit">Go</button>
       </div>
       <div class="profile">
-        <a href="#profile">
-          <h3>Profile</h3>
-        </a>
+        <a href="{%url 'logout' %}"> Logout </a>
       </div>
     </nav>
     <div class="all-recipes">

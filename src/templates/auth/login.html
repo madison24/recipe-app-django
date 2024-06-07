@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %}
+    {%load static %}
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,23 +15,21 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
       rel="stylesheet"
     />
-    <title>Recipe App Home</title>
+    <title>Recipe App Login</title>
   </head>
   <body>
-    <div class="main-image">
-      <img src="{% static 'recipes/images/recipe-home.jpg' %}" alt="home" />
-    </div>
-
-    <div class="header">
-      <h2>Welcome to the Recipe App!</h2>
-    </div>
-    <div class="subheader">
-      <h3>Sign in to explore our collection of recipes.</h3>
-    </div>
-    <div style="text-align: center">
-      <button class="login-button">
-        <a href="{%url 'login' %}" style="color: white">Login</a>
-      </button>
+    <div class="login-modal">
+      <div>
+        <h1 style="margin: 20px">Login</h1>
+        <br />
+        <div>
+          {% if error_message %} {{error_message}} {% endif %}
+          <form action="" method="POST" class="login-input">
+            {% csrf_token %} {{form}}
+            <button type="submit" class="login-button">Login</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

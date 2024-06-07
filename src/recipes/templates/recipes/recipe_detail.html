@@ -6,6 +6,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'recipes/css/styles.css' %}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,27 +18,6 @@
       rel="stylesheet"
     />
     <title>Recipe App</title>
-    <style>
-      body {
-        font-family: "Oswald", serif;
-      }
-      .recipe-modal {
-        border-radius: 10px;
-        padding: 25px;
-        width: 55%;
-        background-color: #fde5a4;
-        box-shadow: 5px 10px 15px;
-        margin: 0 auto;
-        margin-top: 23vh;
-      }
-      .details-main {
-        display: flex;
-      }
-      .details-extra,
-      .ing-dir {
-        padding: 8px;
-      }
-    </style>
   </head>
   <body>
     <div class="recipe-modal">

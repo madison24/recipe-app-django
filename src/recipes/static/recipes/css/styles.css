@@ -1,0 +1,149 @@
+body {
+  font-family: "Oswald", serif;
+}
+h3 {
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+}
+
+/* recipes_home */
+.main-image {
+  width: 100%;
+}
+.main-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+.header,
+.subheader,
+.container {
+  text-align: center;
+}
+
+.login-button {
+  background-color: #d55936;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  width: 70px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+
+.login-button:hover {
+  background-color: #a62805;
+  color: white;
+}
+
+/* login.html */
+.login-modal {
+  width: 25%;
+  background-color: #fde5a4;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 5px 10px 15px;
+  margin: 10px auto;
+  margin-top: 23vh;
+}
+
+.login-input {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+/* allrecipes.html*/
+.navbar {
+  max-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 100px;
+  background-color: #fde5a4;
+}
+.title {
+  display: flex;
+  color: #d44d28;
+  font-size: 20px;
+}
+.search-bar {
+  display: flex;
+}
+.search-bar input {
+  font-size: 15px;
+  width: 325px;
+  padding: 8px;
+  border-radius: 5px 0px 0px 5px;
+  border-width: thin;
+}
+.search-bar button {
+  font-size: 15px;
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+  background-color: #d44d28;
+  color: white;
+}
+.profile a {
+  text-decoration: none;
+  color: black;
+}
+.all-recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px 0 20px 0 20px;
+  width: 75vw;
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-top: 20px;
+  grid-row-gap: 15px;
+}
+.recipe-item {
+  border-radius: 7px;
+  width: 50vh;
+  padding-bottom: 15px;
+  text-align: center;
+  background-color: #fde5a4;
+}
+.recipe-name {
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+.recipe-name:hover {
+  color: #d44d28;
+  transition: 200ms;
+}
+.recipe-details {
+  margin-bottom: 10px;
+}
+.recipe-pic {
+  width: 300px;
+  height: 280px;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+/*recipedetail.html*/
+.recipe-modal {
+  border-radius: 10px;
+  padding: 25px;
+  width: 55%;
+  background-color: #fde5a4;
+  box-shadow: 5px 10px 15px;
+  margin: 0 auto;
+  margin-top: 23vh;
+}
+.details-main {
+  display: flex;
+}
+.details-extra,
+.ing-dir {
+  padding: 8px;
+}
