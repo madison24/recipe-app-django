@@ -25,29 +25,66 @@
       <div class="title">
         <h1>Recipe App</h1>
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search recipes. . ." />
-        <button type="submit">Go</button>
-      </div>
+
       <div class="profile">
         <a href="{%url 'logout' %}"> Logout </a>
       </div>
     </nav>
+
+    <div id="search-container" style="margin-left: 10px">
+      <div class="search-holder">
+        <div class="top-notch"></div>
+
+        <form id="searchForm" method="get">
+          {{ search_form.as_p }}
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+    </div>
+
+    {% if search_details %}
+    <h3 class="search-results">{{ search_details }}</h3>
+    <a class="main-header" href="{%url 'recipes:list' %}"
+      >Back to all recipes</a
+    >
+    {% endif %}
+
+    <!-- <div class="search">
+      <div class="search-form">
+        <form class="search-bar" method="get">
+          {{ search_form.as_p }}
+          <div>
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </form>
+      </div>
+    </div> -->
+
     <div class="all-recipes">
       {% for object in object_list %}
       <div class="recipe-item">
-        <h4>
-          <a class="recipe-name" href="{{object.get_absolute_url}}">
-            {{object.name}}</a
-          >
-        </h4>
-        <img class="recipe-pic" src="{{object.pic.url}}" />
-        <div class="recipe-details">
-          <b>Cooking Time: </b> {{object.cooking_time}} <br />
-          <b>Difficulty: </b> {{object.calculate_difficulty}} <br />
-        </div>
+        <a class="recipe-name" href="{{object.get_absolute_url}}">
+          {{object.name}}
+
+          <div>
+            {% if object.pic_url %}
+            <img src="{{object.pic_url}}" class="recipe-pic" />
+            {% endif %}
+          </div>
+          <div class="recipe-details">
+            <b>Cooking Time: </b> {{object.cooking_time}} <br />
+            <b>Difficulty: </b> {{object.calculate_difficulty}} <br />
+          </div>
+        </a>
       </div>
+
       {% endfor %}
+    </div>
+    <div class="chart-container">
+      <img
+        src="data:image/png;base64, {{ popular_ingredients_chart }}"
+        alt="popular ingredients chart"
+      />
     </div>
   </body>
 </html>
