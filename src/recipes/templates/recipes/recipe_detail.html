@@ -21,7 +21,13 @@
   </head>
   <body>
     <div class="recipe-modal">
+      <span
+        ><a class="main-header" href="{%url 'recipes:list' %}"
+          >Back to all recipes</a
+        ></span
+      >
       <h2>{{object.name}}</h2>
+
       <div class="details-main">
         <div class="details-extra">
           <img src="{{object.pic.url}}" width="200" />
