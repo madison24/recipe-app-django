@@ -1,9 +1,12 @@
 from django.test import TestCase
 from .forms import RecipeSearchForm
 from .models import Recipe
+from django.urls import reverse
+from django.contrib.auth.models import User
+from .forms import CreateRecipeForm
 
+## Recipe test ##
 
-# Create your tests here.
 class RecipeModelTest(TestCase):
     def setUpTestData():
         Recipe.objects.create( 
@@ -41,7 +44,8 @@ class RecipeModelTest(TestCase):
         recipe = Recipe.objects.get(id=1)
         self.assertEqual(recipe.calculate_difficulty(), 'Easy')
 
-
+## Recipe search test ##
+        
 class RecipeFormTest(TestCase):
     def test_form_validity(self):
         form_data = {
@@ -51,3 +55,27 @@ class RecipeFormTest(TestCase):
         form = RecipeSearchForm(data=form_data)
         self.assertTrue(form.is_valid())
 
+
+## User create a recipe test ##
+
+class RecipeAuthTest(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(username='user', password='password')
+        self.recipe = Recipe.objects.create(
+            name='Test Recipe',
+            cooking_time='5',
+            ingredients='Test Ingredients',
+            directions='Test directions'
+        )
+        self.login_url = reverse('login')
+    
+    def test_create_recipe(self):
+        self.client.login(username='user', password='password')
+        response = self.client.post(reverse('recipes:create'), {
+            'name': 'New Recipe',
+            'cooking_time': 20,
+            'ingredients': 'Test Ingredients',
+            'directions': 'Test directions'
+        })
+        self.assertIn(response.status_code, [200, 302])

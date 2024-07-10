@@ -1,6 +1,6 @@
 ### Recipe App
 
-In this app users are able to add their own recipes with data that includes the :
+In this app users are able to view and add their own recipes with data that includes the :
 
 - Recipe Name
 - Cooking Time

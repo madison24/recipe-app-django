@@ -27,6 +27,10 @@
       </div>
 
       <div class="profile">
+        <a href="/create/">Create Recipe</a>
+
+        <a href="/about/">About Me</a>
+
         <a href="{%url 'logout' %}"> Logout </a>
       </div>
     </nav>
@@ -80,11 +84,11 @@
 
       {% endfor %}
     </div>
-    <div class="chart-container">
+    <!-- <div class="chart-container">
       <img
         src="data:image/png;base64, {{ popular_ingredients_chart }}"
         alt="popular ingredients chart"
       />
-    </div>
+    </div> -->
   </body>
 </html>

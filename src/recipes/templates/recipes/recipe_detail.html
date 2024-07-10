@@ -20,6 +20,20 @@
     <title>Recipe App</title>
   </head>
   <body>
+    <div class="main-image">
+      <img src="{% static 'recipes/images/recipe-home.jpg' %}" alt="home" />
+    </div>
+    <nav class="navbar">
+      <div class="title">
+        <h1>Recipe App</h1>
+      </div>
+
+      <div class="profile">
+        <a href="/create/">Create Recipe</a>
+        <a href="/about/">About Me</a>
+        <a href="{%url 'logout' %}"> Logout </a>
+      </div>
+    </nav>
     <div class="recipe-modal">
       <span
         ><a class="main-header" href="{%url 'recipes:list' %}"

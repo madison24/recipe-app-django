@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Recipe
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import RecipeSearchForm
+from django.contrib.auth.decorators import login_required
+from .forms import RecipeSearchForm, CreateRecipeForm
 from .utils import get_popular_ingredients_chart
 
 import pandas as pd 
@@ -16,6 +17,8 @@ class AllRecipeView(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = 'recipes/all_recipes.html'
 
+## search all recipes ##
+    
     def get_queryset(self):
         queryset = super().get_queryset()
         
@@ -70,6 +73,8 @@ class AllRecipeView(LoginRequiredMixin, ListView):
 
         return context
 
+## Recipe details modal ##
+
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipes/recipe_detail.html'
@@ -80,3 +85,45 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
             'search_params': self.request.GET.urlencode()
         })
         return context
+    
+def about_view(request):
+    return render(request, 'recipes/about.html')
+
+## form to create a recipe ## 
+
+@login_required
+def create_view(request):
+    create_form = CreateRecipeForm (request.POST or None, request.FILES)
+    name = None
+    cooking_time = None
+    ingredients = None
+    directions = None
+    pic = None
+
+    if request.method == 'POST':
+
+        try:
+            recipe = Recipe.objects.create(
+                name = request.POST.get('name'),
+                cooking_time = request.POST.get('cooking_time'),
+                ingredients = request.POST.get('ingredients'),
+                directions = request.POST.get('direction'),
+                pic = request.POST.get('pic')
+            )
+
+            recipe.save()
+
+        except:
+            print('Error!!!')
+
+    context = {
+        'create_form': create_form,
+        'name': name,
+        'cooking_time': cooking_time,
+        'ingredients': ingredients,
+        'directions': directions,
+        'pic': pic,
+    }
+
+    return render(request, 'recipes/create_recipe.html', context)
+

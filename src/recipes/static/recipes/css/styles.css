@@ -79,6 +79,7 @@ a {
 .profile a {
   text-decoration: none;
   color: black;
+  padding-left: 20px;
 }
 
 .all-recipes {
@@ -133,6 +134,7 @@ a {
 .details-main {
   display: flex;
 }
+
 .details-extra,
 .ing-dir {
   padding: 8px;

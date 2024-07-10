@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {%load static %}
+    {% load static %}
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
       rel="stylesheet"
     />
-    <title>Recipe App Login</title>
+    <title>About Me</title>
   </head>
   <body>
     <div class="main-image">
@@ -27,20 +29,30 @@
       </div>
 
       <div class="profile">
+        <a href="/create/">Create Recipe</a>
+        <a href="/about/">About Me</a>
         <a href="{%url 'logout' %}"> Logout </a>
       </div>
     </nav>
 
-    <div class="login-modal">
+    <div class="recipe-modal">
+      <span
+        ><a class="main-header" href="{%url 'recipes:list' %}"
+          >Back to all recipes</a
+        ></span
+      >
+      <h2>Madison Housman, Web Developer</h2>
+
       <div>
-        <h1 style="margin: 20px">Login</h1>
-        <br />
-        <div>
-          {% if error_message %} {{error_message}} {% endif %}
-          <form action="" method="POST" class="login-input">
-            {% csrf_token %} {{form}}
-            <button type="submit" class="login-button">Login</button>
-          </form>
+        <div class="ing-dir">
+          Hi! My name is Madison and I created this recipe app using Django,
+          Python, HTML, CSS, and JavaScript. Check out the links below to see
+          more of my work!
+        </div>
+        <div class="portfolio-link">
+          <a href="https://madison24.github.io/portfolio-website/">Portfolio</a>
+          <br />
+          <a href="https://github.com/madison24">GitHub</a>
         </div>
       </div>
     </div>
